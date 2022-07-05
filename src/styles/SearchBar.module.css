@@ -1,0 +1,52 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.searchBarComponent {
+  background: #032541;
+  padding: 5px;
+}
+
+.searchBar {
+  display: flex;
+  margin: 0 auto;
+  width: 60%;
+  align-items: center;
+  height: 40px;
+  border-radius: 40px;
+  padding: 0 0 0 20px;
+  position: relative;
+  background: #fff;
+}
+
+.input {
+  border: none;
+  height: 25px;
+  color: #666;
+  font-size: 15px;
+  outline: none;
+  width: calc(100% - 160px)
+}
+
+.searchBtn {
+  display: flex;
+  border: none;
+  background: rgb(58, 217, 180);
+  background: linear-gradient(90deg, rgba(58, 217, 180, 1) 0%, rgba(1, 134, 173, 1) 100%);
+  border-radius: 20px;
+  height: 40px;
+  width: 150px;
+  min-width: 40px;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  right: 0px;
+  position: absolute;
+  transition: all 1s ease;
+  color: white;
+  padding: 5px 20px;
+  font-size: .8rem;
+  font-weight: bold;
+}

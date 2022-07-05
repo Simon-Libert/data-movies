@@ -1,10 +1,14 @@
 import React from 'react'
-import Header from '../components/Header'
+import CardDesc from '../components/Card-desc'
+import PopMovies from '../components/Pop-movies'
+import SearchBar from '../components/SearchBar'
 
 export default function Home() {
   return (
     <div className='home-page'>
-      <Header />
+      <SearchBar />
+      <PopMovies />
+      <CardDesc />
     </div>
   )
 }
