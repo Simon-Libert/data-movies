@@ -1,0 +1,57 @@
+.card {
+  background-image: url("https://www.themoviedb.org/t/p/w1920_and_h800_multi_faces/zxWAv1A34kdYslBi4ekMDtgIGUt.jpg");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  border-radius: 20px;
+  border-bottom: 1px solid rgb(116, 24, 24);
+  /* background-position: right -200px top; */
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.cardBackground {
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 0.795) 150px, rgba(94.5, 31.5, 31.5, 0.84) 100%);
+  border-radius: 20px;
+  padding: 10px;
+}
+
+.cardContent {
+  padding: 10px;
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+.poster {
+  width: 300px;
+  margin: 0 30px 0 10px;
+}
+
+.poster img {
+  width: 100%;
+  border-radius: 8px;
+}
+
+.info {
+  color: #fff;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.info h2 {
+  margin: 2em 0 0.2em 0;
+}
+
+.info h2>span {
+  color: #ccc;
+}
+
+.info p {
+  font-size: 0.9em;
+}
+
+.note {
+  margin: 2em 0;
+}
+
+.info h3 {
+  margin: 2em 0 1em 0;
+}
