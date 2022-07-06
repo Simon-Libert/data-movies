@@ -33,3 +33,12 @@
   padding: 0px 5px 5px 8px;
   font-family: Arial, Helvetica, sans-serif;
 }
+
+.cardsPop {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  justify-content: center;
+  margin: 0 auto;
+  padding: 0;
+}
