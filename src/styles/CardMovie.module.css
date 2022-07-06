@@ -1,10 +1,8 @@
 .card {
-  background-image: url("https://www.themoviedb.org/t/p/w1920_and_h800_multi_faces/zxWAv1A34kdYslBi4ekMDtgIGUt.jpg");
   background-repeat: no-repeat;
   background-size: 100% 100%;
   border-radius: 20px;
   border-bottom: 1px solid rgb(116, 24, 24);
-  /* background-position: right -200px top; */
   background-size: cover;
   background-repeat: no-repeat;
 }
@@ -41,7 +39,9 @@
 }
 
 .info h2>span {
-  color: #ccc;
+  color: #fff;
+  font-size: 0.9em;
+  font-weight: 100;
 }
 
 .info p {
@@ -54,4 +54,35 @@
 
 .info h3 {
   margin: 2em 0 1em 0;
+}
+
+/* Note */
+.noteComponent {
+  display: flex;
+  /* background-color: #032541; */
+  margin-top: 2em;
+}
+
+.progressRing {
+  position: relative;
+  width: 120px;
+}
+
+.ringText {
+  font-weight: bold;
+  text-align: center;
+  margin-top: -65px;
+  font-size: 1.4em;
+}
+
+.ringText span {
+  font-size: 0.4em;
+  line-height: 1.4em;
+  vertical-align: text-top;
+}
+
+.noteInfo {
+  font-size: 0.85rem;
+  font-weight: bold;
+  line-height: 100px;
 }
