@@ -55,34 +55,3 @@
 .info h3 {
   margin: 2em 0 1em 0;
 }
-
-/* Note */
-.noteComponent {
-  display: flex;
-  /* background-color: #032541; */
-  margin-top: 2em;
-}
-
-.progressRing {
-  position: relative;
-  width: 120px;
-}
-
-.ringText {
-  font-weight: bold;
-  text-align: center;
-  margin-top: -65px;
-  font-size: 1.4em;
-}
-
-.ringText span {
-  font-size: 0.4em;
-  line-height: 1.4em;
-  vertical-align: text-top;
-}
-
-.noteInfo {
-  font-size: 0.85rem;
-  font-weight: bold;
-  line-height: 100px;
-}
