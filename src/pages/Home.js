@@ -8,6 +8,7 @@ export default function Home() {
   const [popMovies, setPopMovies] = useState()
   const [search, setSearch] = useState("a")
   const [movieData, setMovieData] = useState()
+  const [movie, setMovie] = useState()
 
   useEffect(() => {
     axios.get(`https://api.themoviedb.org/3/search/movie?api_key=${process.env.REACT_APP_API_KEY}&query=${search}&language=fr-FR`).then((res) => setMovieData(res.data.results))
@@ -25,11 +26,17 @@ export default function Home() {
     return <p>Loading...</p>
   }
 
+  //setMovie(popMovies[0])
+
   const handleChange = (e) => {
     setSearch(e.target.value)
   }
 
   /* const movieView = movieData[0] === undefined ? popMovies[0] : movieData[0] */
+
+  const handleClick = (id) => {
+    console.log("film id", id)
+  }
 
   return (
     <div className="container">
@@ -40,7 +47,7 @@ export default function Home() {
         {(search.length > 0) ? (
           <>
             <h2 style={{ textAlign: 'center', margin: '0.5em 0' }}>Recherche</h2>
-            <CardThumbnail data={movieData} />
+            <CardThumbnail data={movieData} handleClick={handleClick} />
           </>
         ) : null}
         <h2 style={{ textAlign: 'center', margin: '0.5em 0' }}>Films populaires</h2>

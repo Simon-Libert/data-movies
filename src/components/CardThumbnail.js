@@ -3,12 +3,12 @@ import styles from '../styles/CardThumbnail.module.css'
 import { format } from 'date-fns'
 import { fr } from 'date-fns/locale'
 
-export default function CardThumbnail({ data }) {
+export default function CardThumbnail({ data, handleClick }) {
 
   return (
     <div className={styles.cardsPop}>
       {data.slice(0, 5).map((element) => (
-        <div key={element.id} className={styles.card}>
+        <div key={element.id} className={styles.card} onClick={() => handleClick(element.id)}>
           <div className={styles.thumbnail}>
             <img src={`https://www.themoviedb.org/t/p/w300_and_h450_bestv2${element.poster_path}`} alt='poster' />
           </div>
