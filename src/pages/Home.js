@@ -11,11 +11,24 @@ export default function Home() {
   const [movie, setMovie] = useState()
 
   useEffect(() => {
-    axios.get(`https://api.themoviedb.org/3/search/movie?api_key=${process.env.REACT_APP_API_KEY}&query=${search}&language=fr-FR`).then((res) => setMovieData(res.data.results))
-  }, [search])
+    const fetchData = async () => {
+      const result = await axios.get(`https://api.themoviedb.org/3/search/movie?api_key=${process.env.REACT_APP_API_KEY}&query=${search}&language=fr-FR`)
+
+      setMovieData(result.data.results)
+    }
+    fetchData()
+  },
+    [search])
+
 
   useEffect(() => {
-    axios.get(`https://api.themoviedb.org/3/movie/popular?api_key=${process.env.REACT_APP_API_KEY}&language=fr-FR`).then((res) => setPopMovies(res.data.results))
+    const fetchData = async () => {
+      const result = await axios.get(`https://api.themoviedb.org/3/movie/popular?api_key=${process.env.REACT_APP_API_KEY}&language=fr-FR`)
+
+      setPopMovies(result.data.results)
+      setMovie(result.data.results[0])
+    }
+    fetchData()
   }, [])
 
   if (movieData === undefined) {
@@ -26,16 +39,16 @@ export default function Home() {
     return <p>Loading...</p>
   }
 
-  //setMovie(popMovies[0])
-
   const handleChange = (e) => {
     setSearch(e.target.value)
   }
 
-  /* const movieView = movieData[0] === undefined ? popMovies[0] : movieData[0] */
-
   const handleClick = (id) => {
-    console.log("film id", id)
+    const fetchData = async () => {
+      const result = await axios.get(`https://api.themoviedb.org/3/movie/${id}?api_key=${process.env.REACT_APP_API_KEY}&language=fr-FR`)
+      setMovie(result.data)
+    }
+    fetchData()
   }
 
   return (
@@ -43,7 +56,7 @@ export default function Home() {
       <SearchBar handleChange={handleChange} />
       <div className="container-main">
         <h2 style={{ textAlign: 'center', margin: '0.5em 0' }}>Description</h2>
-        <CardMovie data={popMovies[0]} />
+        <CardMovie data={movie} />
         {(search.length > 0) ? (
           <>
             <h2 style={{ textAlign: 'center', margin: '0.5em 0' }}>Recherche</h2>
@@ -51,7 +64,7 @@ export default function Home() {
           </>
         ) : null}
         <h2 style={{ textAlign: 'center', margin: '0.5em 0' }}>Films populaires</h2>
-        <CardThumbnail data={popMovies} />
+        <CardThumbnail data={popMovies} handleClick={handleClick} />
       </div>
     </div>
   )

@@ -83,12 +83,25 @@ const genres = [
 ]
 
 export default function CardMovie({ data }) {
-  const listGenres = data.genre_ids.map((element) => {
-    return genres.find((genre) => genre.id === element).name
-  })
+  let listGenres = []
+  if (data.genre_ids === undefined) {
+    listGenres = data.genres.map((element) => element.name)
+  }
+  else {
+    listGenres = data.genre_ids.map((element) => {
+      return genres.find((genre) => genre.id === element).name
+    })
+  }
+
+  const circumference = 42 * 2 * Math.PI; // 42 est le rayon de "circle"
+  const strokeDasharray = `${circumference} ${circumference}`;
+  const progress = circumference - data.vote_average * 10 / 100 * circumference
 
   return (
-    <div className={styles.card} style={{ backgroundImage: `url(https://www.themoviedb.org/t/p/w1920_and_h800_multi_faces/${data.backdrop_path})` }}>
+    <div
+      className={styles.card}
+      style={{ backgroundImage: `url(https://www.themoviedb.org/t/p/w1920_and_h800_multi_faces/${data.backdrop_path})` }}
+    >
       <div className={styles.cardBackground}>
         <div className={styles.cardContent}>
           <div className={styles.poster}>
@@ -96,16 +109,33 @@ export default function CardMovie({ data }) {
           </div>
           <div className={styles.info}>
             <h2>{data.title + ' '}
-              <span>({format(new Date(data.release_date), 'yyyy', { locale: fr })})
-              </span>
+              <span>{data.release_date !== undefined ? `(${format(new Date(data.release_date), 'yyyy', { locale: fr })})` : null}</span>
             </h2>
-            <p>{format(new Date(data.release_date), 'd MMM yyyy', { locale: fr })} &#8226; {listGenres.join(", ")} &#8226; 2h12m</p>
+            <p>
+              {data.release_date !== undefined || format(new Date(data.release_date), 'd MMM yyyy', { locale: fr })}
+              &#8226;
+              {listGenres.join(", ")} &#8226; 2h12m
+            </p>
 
-            <div className={styles.note}>
-              {data.vote_average + " Note des utilisateurs"}
+            <div className={styles.noteComponent}>
+              <div className={styles.progressRing}>
+                <svg className={styles.ring} height="100" width="100">
+                  <circle strokeWidth="9" stroke="#006600" fill="transparent" r="42" cx="50" cy="50" />
+                  <circle
+                    strokeWidth="9"
+                    stroke="#009900"
+                    fill="transparent"
+                    r="42" cx="50" cy="50"
+                    strokeDasharray={strokeDasharray}
+                    strokeDashoffset={progress}
+                  />
+                </svg>
+                <div className={styles.ringText}>{data.vote_average * 10}<span>%</span></div>
+              </div>
+              <div className={styles.noteInfo}>Note des utilisateurs</div>
             </div>
             <h3>Synopsis</h3>
-            <p>{data.overview}</p>
+            <p>{data.overview === '' ? 'Aucun Synopsis disponible' : data.overview}</p>
           </div>
         </div>
       </div>

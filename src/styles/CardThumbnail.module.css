@@ -6,11 +6,20 @@
   border-radius: 10px;
   position: relative;
   overflow: hidden;
+  cursor: pointer;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
 .card:hover {
-  width: 152px;
+  -webkit-transform: scale(1.05);
+  /* Safari et Chrome */
+  -moz-transform: scale(1.05);
+  /* Firefox */
+  -ms-transform: scale(1.05);
+  /* Internet Explorer 9 */
+  -o-transform: scale(1.05);
+  /* Opera */
+  transform: scale(1.05);
 
 }
 
